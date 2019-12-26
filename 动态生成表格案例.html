@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    table {
+        width: 500px;
+        margin: 100px auto;
+        text-align: center;
+        border: 1px solid #000;
+        border-collapse: collapse;
+    }
+    table th {
+        height: 30px;
+        background-color: #ccc;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+    }
+    table td {
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+    }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- css的写法 -->
+            <!-- <tr>
+                <td>维罗永</td>
+                <td>JavaScript</td>
+                <td>100</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            <tr>
+                <td>维罗永</td>
+                <td>JavaScript</td>
+                <td>100</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            <tr>
+                <td>维罗永</td>
+                <td>JavaScript</td>
+                <td>100</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr>
+            <tr>
+                <td>维罗永</td>
+                <td>JavaScript</td>
+                <td>100</td>
+                <td><a href="javascript:;">删除</a></td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+    var datas =  [
+        {
+            name:'芙樱落',
+            project:'javascript',
+            score:100
+        },
+        {
+            name:'芙樱落',
+            project:'javascript',
+            score:100
+        },
+        {
+            name:'芙樱落',
+            project:'javascript',
+            score:100
+        },
+        {
+            name:'芙樱落',
+            project:'javascript',
+            score:100
+        }
+    ];
+        var tb = document.querySelector('tbody');
+        // 创建行
+        for(var i=0; i<datas.length; i++) {
+            var tr = document.createElement('tr');
+
+            tb.appendChild(tr); 
+            // 行里面创建单元格
+            for(var k in datas[i]) {
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);   
+            }
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">删除</a>'
+            tr.appendChild(td)
+        
+        }
+        // 删除操作要在所有的行和列创建完成之后才能进行删除
+        var as = document.querySelectorAll('a');
+            for(var i=0; i<as.length; i++) {
+                as[i].onclick = function() {
+                    // 点击a删除 当前a 所在的行（链接的爸爸的爸爸） node.removeChild(child)
+                    tb.removeChild(this.parentNode.parentNode);
+                }
+            }
+    </script>
+</body>
+</html>

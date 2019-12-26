@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    .login-header {
+        width: 100%;
+        height: 200px;
+        text-align: center;
+    }
+    .login-header a {
+        display: inline-block;
+        /* padding-top: 100px; */
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+    }
+    .login {
+        display: none;
+        position: relative;
+        width: 400px;
+        height: 250px;
+        margin: 0 auto;
+        border: 1px solid #cccccc;
+        z-index: 9;
+        background-color: #fff;
+        /* background-color: pink; */
+    }
+    .login-title {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .close-login {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #fff;
+        text-decoration: none;
+        color: #000;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 15px;
+    }
+    .login-input {
+        margin: 20px 10px ;
+        font-size: 14px;
+    }
+    .login-input input {
+        width: 250px;
+        height: 25px;
+        line-height: 25px;
+    }
+    .login-button {
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+        margin: 50px auto;
+        text-align: center;
+        border: 1px solid #cccccc;
+    }
+    .login-button a {
+        text-decoration: none;
+        color: #000;
+        font-size: 12px;
+    }
+    .login-bg {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .3);
+
+    }
+    </style>
+</head>
+<body>
+    <div class="login-header"><a href="javascript:;" id="link">点击，弹出登录框</a></div>
+    <div class="login" id="login">
+        <div id="title" class="login-title">登录会员
+            <span><a href="javascript:void(0);" id="closeBtn" class="close-login">关闭</a></span>
+        </div>
+        <div class="login-input-content">
+            <div class="login-input">
+                <label> &nbsp;&nbsp;&nbsp;用户名:&nbsp;</label>
+                <input type="text" placeholder="请输入用户名" name="info[username]" id="username">
+              </div>
+              <div class="login-input">
+                  <label for="">登陆密码:&nbsp;</label>
+                  <input type="password" placeholder="请输入登陆密码" name="info[password]" id="password">
+              </div>
+            </div>
+            <div class="login-button" id="loginBtn"><a href="javascript:void(0);" id="login-button-submit">登录会员</a></div>
+     </div>
+     <!-- 遮盖曾 -->
+     <div class="login-bg" id="bg"></div>
+
+     <script>
+     var closeBtn = document.querySelector('.close-login');
+     var link = document.querySelector('#link');
+     var login = document.querySelector('.login');
+     var bg = document.querySelector('.login-bg');
+     var title = document.querySelector('#title')
+
+     link.addEventListener('click',function() {
+        bg.style.display = 'block';
+        login.style.display = 'block';
+     })
+     closeBtn.addEventListener('click',function() {
+        bg.style.display = 'none';
+        login.style.display = 'none';
+     })
+
+    //  开始拖拽
+    // （1）当我们鼠标按下，就获得鼠标在盒子内的坐标
+     title.addEventListener('mousedown',function(e) {
+         var x = e.pageX - offsetLeft;
+         var y = e.pageY - offsetTop;
+        // (2)鼠标移动的时候，吧鼠标在页面中的坐标，减去  鼠标在盒子内的坐标就是模态框的left和top值
+        document.addEventListener('mousemove',move)
+        function move(e) {
+            login.style.left = e.pageX - x + 'px';
+            login.style.top = e.pageY - y + 'px';
+        }
+        // 鼠标弹起，就让鼠标移动事件移除
+        document.addEventListener('mouseup',function() {
+            document.removeEventListener('mousemove',move);
+        })
+     })
+     </script>
+
+</body>
+</html>

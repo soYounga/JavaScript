@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .father {
+        position: relative;
+        top: 40%;
+        left: 40%;
+        width: 500px;
+        height: 400px;
+        /* line-height: 400px; */
+        /* text-align: center; */
+        background-color: skyblue;
+    }
+    .son {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">son儿子
+        </div>
+    </div>
+    <script>
+    var son = document.querySelector('.son');
+    son.addEventListener('click',function(e) {
+        alert('son');
+        e.stopPropagation();// stop 停止  Propagation 传播
+        // e.cancelBubble = true; //非标准的 cancel取消 bubble 泡泡
+    })
+    var father = document.querySelector('.father');
+    father.addEventListener('click',function() {
+        alert('fater');
+    })
+    </script>
+</body>
+</html>

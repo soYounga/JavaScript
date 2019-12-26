@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <a href="http://baidu.com">百度</a>
+
+    <script>
+    var a = document.querySelector('a');
+    // a.addEventListener('click',function(e) {
+    //     e.preventDefault();//dom的标准写法
+    // })
+    a.onclick = function(e) {
+        // 普通浏览器 e.preventDefault();  方法
+        // 低版本浏览器ie678  returnValue 属性
+        return false;//没有兼容性问题  特点： return  后面的代码不执行了，只限于传统方式的注册
+        alert(11);
+    }
+    </script>
+</body>
+</html>

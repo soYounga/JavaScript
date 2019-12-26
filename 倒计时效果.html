@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            margin: 200px auto;
+        }
+    span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+    }
+    
+    </style>
+</head>
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+
+    <script>
+    var hour = document.querySelector('.hour');
+    var minute = document.querySelector('.minute');
+    var second = document.querySelector('.second');
+    var inputTime = +new Date('2019-12-05 18:00:00');
+        countDown()  //先调用防止刚开始延时的一秒
+    setInterval(countDown,1000)
+
+    function countDown() {
+        var nowTime = +new Date()   //当前时间
+        var times = (inputTime - nowTime) / 1000;   //剩余总秒数
+        var h = parseInt(times / 60 / 60  % 24);
+        h = h < 10 ? '0'+ h : h;
+        hour.innerHTML = h;  //把剩余的小时给小时黑色的盒子
+        var m = parseInt(times / 60 % 60);
+        m = m < 10 ? '0' + m : m;
+        minute.innerHTML = m;
+        var s = parseInt(times % 60);
+        s = s < 10 ? '0' + s : s;
+        second.innerHTML = s;
+    }
+
+
+    </script>
+</body>
+</html>
+
+<!-- // 商品购买倒计时
+    function countTime(time) {
+        var nowTime = +new Date();
+        var inputTime = +new Date(time);
+        var times = (nowTime - inputTime) / 1000;
+        var d = parseInt(times / 60 / 60 / 24);
+        d = d < 10 ? '0' + d : d;
+        var h = parseInt(times / 60 / 60 % 24);
+        h = h < 10 ? '0' + h : h;
+        var m = parseInt(times / 60 % 60);
+        m = m < 10 ? '0' + m : m;
+        var s = parseInt(times % 60);
+        s = s < 10 ? '0' + s : s;
+        return d + '天' + h + '时' + m + '分' + s + '秒';
+    }
+    console.log(countTime('2019,11,14 18:00:00'));
+    var now = new Date()
+    console.log(now); -->
